@@ -4,10 +4,10 @@ import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 
-public class dropwizard-authApplication extends Application<dropwizard-authConfiguration> {
+public class AuthApplication extends Application<AuthConfiguration> {
 
     public static void main(final String[] args) throws Exception {
-        new dropwizard-authApplication().run(args);
+        new AuthApplication().run(args);
     }
 
     @Override
@@ -16,12 +16,12 @@ public class dropwizard-authApplication extends Application<dropwizard-authConfi
     }
 
     @Override
-    public void initialize(final Bootstrap<dropwizard-authConfiguration> bootstrap) {
+    public void initialize(final Bootstrap<AuthConfiguration> bootstrap) {
         // TODO: application initialization
     }
 
     @Override
-    public void run(final dropwizard-authConfiguration configuration,
+    public void run(final AuthConfiguration configuration,
                     final Environment environment) {
         // TODO: implement application
     }
