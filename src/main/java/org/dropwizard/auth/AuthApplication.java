@@ -12,7 +12,7 @@ public class AuthApplication extends Application<AuthConfiguration> {
 
     @Override
     public String getName() {
-        return "dropwizard-auth";
+        return "Auth";
     }
 
     @Override
