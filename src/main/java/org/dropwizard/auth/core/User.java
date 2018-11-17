@@ -6,16 +6,18 @@ public class User implements Principal {
 
     private long id;
     private String userName;
-    private String password;
+
+    public User(String userName) {
+        this.id = 0L;
+        this.userName = userName;
+    }
 
     public User(
             long id,
-            String userName,
-            String password
+            String userName
     ) {
         this.id = id;
         this.userName = userName;
-        this.password = password;
     }
 
     public long getId() {
@@ -34,26 +36,16 @@ public class User implements Principal {
         this.userName = userName;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public boolean equals(User otherUser) {
         return (this.id == otherUser.id &&
-                this.userName.equals(otherUser.userName) &&
-                this.password.equals(otherUser.password));
+                this.userName.equals(otherUser.userName));
     }
 
     public String toString() {
         return String.format(
                 "User:{id:%d, userName: %s, password: %s}",
                 this.id,
-                this.userName,
-                this.password);
+                this.userName);
     }
 
     public String getName() {
