@@ -5,12 +5,19 @@ import io.dropwizard.auth.Authenticator;
 import io.dropwizard.auth.basic.BasicCredentials;
 import io.dropwizard.hibernate.UnitOfWork;
 import org.dropwizard.auth.data.UserDAO;
+import org.dropwizard.auth.data.UserEntity;
 
+import java.util.Objects;
 import java.util.Optional;
 
 public class DropwizardAuthenticator implements Authenticator<BasicCredentials, User> {
 
+    private static final Encrypter encrypter;
     private final UserDAO userDAO;
+
+    static {
+        encrypter = new Encrypter();
+    }
 
     public DropwizardAuthenticator (
             UserDAO userDAO
@@ -20,7 +27,10 @@ public class DropwizardAuthenticator implements Authenticator<BasicCredentials, 
 
     @UnitOfWork
     public Optional<User> authenticate(BasicCredentials credentials) throws AuthenticationException {
-        if(userDAO.findByCredentials(credentials.getUsername(), credentials.getPassword()).size() > 0) {
+        UserEntity entity = userDAO.findByUsername(credentials.getUsername());
+
+        if(Objects.nonNull(entity) && encrypter.checkPassword(credentials.getPassword(), entity.getPassword())) {
+
             return Optional.of(new User(credentials.getUsername()));
         }
         return Optional.empty();

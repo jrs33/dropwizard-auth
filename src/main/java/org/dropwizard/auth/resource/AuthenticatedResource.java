@@ -31,7 +31,7 @@ public class AuthenticatedResource {
 
     @Path("/role")
     @GET
-    @RolesAllowed("ADMIN")
+    @RolesAllowed({"ADMIN", "SUPER_ADMIN"})
     public User isAdmin(@Auth User user) {
         return user;
     }

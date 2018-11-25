@@ -13,8 +13,7 @@ import javax.persistence.Table;
         @NamedQuery(
                 name = "org.dropwizard.auth.data.User.find",
                 query = "select u from UserEntity u " +
-                        "where u.username = :username " +
-                        "and u.password = :password"
+                        "where u.username = :username "
         ),
         @NamedQuery(
                 name = "org.dropwizard.auth.data.User.findWithRole",
