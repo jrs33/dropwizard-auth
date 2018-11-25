@@ -15,6 +15,12 @@ import javax.persistence.Table;
                 query = "select u from UserEntity u " +
                         "where u.username = :username " +
                         "and u.password = :password"
+        ),
+        @NamedQuery(
+                name = "org.dropwizard.auth.data.User.findWithRole",
+                query = "select u from UserEntity u " +
+                        "where u.username = :username " +
+                        "and u.role = :role"
         )
 })
 public class UserEntity {
@@ -31,7 +37,7 @@ public class UserEntity {
     private String password;
 
     @Column(name = ROLE)
-    private UserRole role;
+    private String role;
 
     public UserEntity() {
     }
@@ -39,7 +45,7 @@ public class UserEntity {
     public UserEntity(
             String username,
             String password,
-            UserRole role
+            String role
     ) {
         this.username = username;
         this.password = password;
@@ -62,11 +68,11 @@ public class UserEntity {
         this.password = password;
     }
 
-    public UserRole getRole() {
+    public String getRole() {
         return role;
     }
 
-    public void setRole(UserRole role) {
+    public void setRole(String role) {
         this.role = role;
     }
 }

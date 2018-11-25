@@ -47,11 +47,13 @@ public class AuthApplication extends Application<AuthConfiguration> {
         final UserDAO userDAO = new UserDAO(hibernateBundle.getSessionFactory());
         DropwizardAuthenticator dropwizardAuthenticator = new UnitOfWorkAwareProxyFactory(hibernateBundle)
                 .create(DropwizardAuthenticator.class, UserDAO.class, userDAO);
+        DropwizardAuthorizer dropwizardAuthorizer = new UnitOfWorkAwareProxyFactory(hibernateBundle)
+                .create(DropwizardAuthorizer.class, UserDAO.class, userDAO);
 
         BasicCredentialAuthFilter<User> authFilterBuilder =
                 new BasicCredentialAuthFilter.Builder<User>()
                 .setAuthenticator(dropwizardAuthenticator)
-                .setAuthorizer(new DropwizardAuthorizer())
+                .setAuthorizer(dropwizardAuthorizer)
                 .setRealm("A REALM")
                 .buildAuthFilter();
 

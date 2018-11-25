@@ -18,4 +18,12 @@ public class UserDAO extends AbstractDAO<UserEntity> {
                         .setParameter(UserEntity.PASSWORD, password)
         );
     }
+
+    public UserEntity findByRole(String username, UserRole role) {
+        return uniqueResult(
+                namedQuery("org.dropwizard.auth.data.User.findWithRole")
+                        .setParameter(UserEntity.USERNAME, username)
+                        .setParameter(UserEntity.ROLE, role.name())
+        );
+    }
 }

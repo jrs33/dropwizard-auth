@@ -42,10 +42,4 @@ public class AuthenticatedResource {
     public User isDenied(@Auth User user) {
         return user;
     }
-
-    @Path("/optional")
-    @GET
-    public Optional<User> isOptionalAuth(@Auth Optional<User> user) {
-        return user.isPresent() ? user : Optional.<User>absent();
-    }
 }

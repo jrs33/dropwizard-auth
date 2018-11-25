@@ -18,7 +18,6 @@ public class DropwizardAuthenticator implements Authenticator<BasicCredentials, 
         this.userDAO = userDAO;
     }
 
-    @Override
     @UnitOfWork
     public Optional<User> authenticate(BasicCredentials credentials) throws AuthenticationException {
         if(userDAO.findByCredentials(credentials.getUsername(), credentials.getPassword()).size() > 0) {
