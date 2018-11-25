@@ -1,8 +1,6 @@
 package org.dropwizard.auth;
 
-import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonSetter;
 import io.dropwizard.Configuration;
 import io.dropwizard.db.DataSourceFactory;
 
