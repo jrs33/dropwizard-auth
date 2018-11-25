@@ -2,7 +2,9 @@ package org.dropwizard.auth.resource;
 
 import com.google.common.base.Optional;
 import io.dropwizard.auth.Auth;
+import io.dropwizard.hibernate.UnitOfWork;
 import org.dropwizard.auth.core.User;
+import org.dropwizard.auth.data.UserDAO;
 
 import javax.annotation.security.DenyAll;
 import javax.annotation.security.PermitAll;

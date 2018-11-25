@@ -1,3 +1,9 @@
 server:
   type: default
   maxThreads: 1024
+
+database:
+  driverClass: com.mysql.jdbc.Driver
+  user: root
+  password: heyneatcool
+  url: jdbc:mysql://localhost:3306/auth
