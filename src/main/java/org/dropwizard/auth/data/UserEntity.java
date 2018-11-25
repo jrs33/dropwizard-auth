@@ -21,6 +21,7 @@ public class UserEntity {
 
     public static final String USERNAME = "username";
     public static final String PASSWORD = "password";
+    public static final String ROLE = "role";
 
     @Id
     @Column(name = USERNAME)
@@ -29,15 +30,20 @@ public class UserEntity {
     @Column(name = PASSWORD)
     private String password;
 
+    @Column(name = ROLE)
+    private UserRole role;
+
     public UserEntity() {
     }
 
     public UserEntity(
             String username,
-            String password
+            String password,
+            UserRole role
     ) {
         this.username = username;
         this.password = password;
+        this.role = role;
     }
 
     public String getUserName() {
@@ -54,5 +60,13 @@ public class UserEntity {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public UserRole getRole() {
+        return role;
+    }
+
+    public void setRole(UserRole role) {
+        this.role = role;
     }
 }
